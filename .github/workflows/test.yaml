@@ -21,6 +21,8 @@ jobs:
           python-version: "3.12"
           cache: "pip"
       - uses: tlambert03/setup-qt-libs@v1
+      - if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: sudo apt-get install pulseaudio
       - name: Install dependencies
         run: pip install .[test]
       - name: Run PyTests
