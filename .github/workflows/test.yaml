@@ -10,6 +10,9 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
+      fail-fast: false
+    env:
+      DISPLAY: ":99.0"
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -17,6 +20,9 @@ jobs:
         with:
           python-version: "3.12"
           cache: "pip"
+      - uses: tlambert03/setup-qt-libs@v1
+      - if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: sudo apt-get install pulseaudio -y
       - name: Install dependencies
         run: pip install .[test]
       - name: Run PyTests
