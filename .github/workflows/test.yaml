@@ -20,13 +20,9 @@ jobs:
         with:
           python-version: "3.12"
           cache: "pip"
-      - name: Fix headless server mode
-        if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: >
-          sudo apt install
-          libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1
-          libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libxcb-xfixes0
-          x11-utils ffmpeg libsm6 libxext6 libgl1 pulseaudio
+      - uses: tlambert03/setup-qt-libs@v1
+      - if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: sudo apt-get install pulseaudio -y
       - name: Install dependencies
         run: pip install .[test]
       - name: Run PyTests
