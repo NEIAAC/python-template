@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/NEIAAC/python-gui-template/compare/v1.0.0...v1.0.1) (2024-10-19)
+
+
+### Bug Fixes
+
+* update callable type in system tray notifications ([4e6f093](https://github.com/NEIAAC/python-gui-template/commit/4e6f0931a20cee8160dab190aa5289bb8383fd1d))
+
 ## [1.0.0](https://github.com/NEIAAC/python-gui-template/compare/v0.1.0...v1.0.0) (2024-10-19)
 
 
