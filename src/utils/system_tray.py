@@ -14,7 +14,7 @@ class SystemTray(QSystemTrayIcon):
 
     def send(self, title: str, body: str, messageClicked: callable = None):
         """Allows sending tray messages without showing an icon in the system tray."""
-        self.messageClicked.connect(messageClicked())
+        self.messageClicked.connect(messageClicked)
         visible = self.isVisible()
         if not visible:
             self.setVisible(True)
