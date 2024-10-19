@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/NEIAAC/python-gui-template/compare/v1.0.1...v1.0.2) (2024-10-19)
+
+
+### Documentation
+
+* improve introduction ([c4048dd](https://github.com/NEIAAC/python-gui-template/commit/c4048ddfa95238be1f8b33dc9de051eaabd60b0e))
+
 ## [1.0.1](https://github.com/NEIAAC/python-gui-template/compare/v1.0.0...v1.0.1) (2024-10-19)
 
 
