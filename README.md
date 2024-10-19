@@ -11,17 +11,17 @@ Contains linting, formatting and testing tools.
 
 - Go to the `Releases` page of the GitHub repository.
 
-- Under the `Assets` section for the latest release, click the folder with the app name for your operating system.
+- Under the `Assets` section for the latest release, click the entry with the name of your operating system.
 
 - After downloading, extract the top content from the `.zip` to anywhere you want.
 
 ### Windows
 
-- Run the `main.exe` file inside, you can create a shortcut with any name you like for this file.
+- Run the `main.exe` file inside the extracted folder, you can create a shortcut with any name you like for this file.
 
 ### Linux
 
-- Run the `main.bin` file inside. Note that compilation is targeted at Ubuntu, other distributions may need additional actions to run the app.
+- Run the `main.bin` file inside the extracted folder. Note that compilation is targeted at Ubuntu (Wayland), other distributions may need additional actions to run the app.
 
 ### MacOS
 
