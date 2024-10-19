@@ -18,6 +18,13 @@ jobs:
         with:
           python-version: "3.12"
           cache: "pip"
+      - name: Install missing QT dependencies
+        if: ${{ matrix.os == "ubuntu-latest" }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxcb-xinerama0
+          sudo apt-get install -y pyqt5-dev-tools
+
       - name: Install dependencies
         run: pip install .[test]
       - name: Run PyTests
