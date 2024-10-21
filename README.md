@@ -57,8 +57,12 @@ With the exception of the points above, we believe this template to be decently 
   pip install .[check]
   ruff check --fix
   ruff format
+
   # To automatically lint and format on every commit install the pre-commit hooks:
   pre-commit install
+
+  # Note that when using pre-commit the git command will fail if any files are lint fixed or formatted.
+  # You will have to add the changed files to the staged area and commit again to apply the changes.
   ```
 
 - PyTest and PyTest-Qt are used for testing:
