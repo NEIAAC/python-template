@@ -1,6 +1,8 @@
-from PySide6.QtCore import QThread, Signal
-from utils.logger import logger
 from datetime import datetime
+
+from PySide6.QtCore import QThread, Signal
+
+from utils.logger import logger
 
 
 class ExampleThread(QThread):

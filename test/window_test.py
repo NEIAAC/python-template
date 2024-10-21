@@ -1,7 +1,6 @@
-from src.window import Window
-
 from pytestqt.qt_compat import qt_api as qtapi
 
+from window import Window
 
 def testWindow(qtbot):
     """
