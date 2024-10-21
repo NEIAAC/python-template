@@ -55,8 +55,10 @@ With the exception of the points above, we believe this template to be decently 
 
   ```shell
   pip install .[check]
-  ruff check fix
+  ruff check --fix
   ruff format
+  # To automatically lint and format on every commit install the pre-commit hooks:
+  pre-commit install
   ```
 
 - PyTest and PyTest-Qt are used for testing:
