@@ -21,6 +21,9 @@ class ExampleThread(QThread):
         self.outputSignal.emit(timestamped, level)
 
     def run(self):
+        logger.info(
+            f"Starting example thread with input parameters: {self.__dict__}"
+        )
         self.output("...")
         with logger.catch():
             self.output("Your first input was: " + self.firstInput)
