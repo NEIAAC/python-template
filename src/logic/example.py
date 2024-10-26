@@ -21,6 +21,7 @@ class ExampleThread(QThread):
         self.outputSignal.emit(timestamped, level)
 
     def run(self):
+        self.output("...")
         with logger.catch():
             self.output("Your first input was: " + self.firstInput)
             self.output(
