@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/NEIAAC/python-gui-template/compare/v1.0.2...v1.0.3) (2024-10-26)
+
+
+### Bug Fixes
+
+* improve best practices ([186385e](https://github.com/NEIAAC/python-gui-template/commit/186385efd8ff3ef80819288665df5521f20d6358))
+
 ## [1.0.2](https://github.com/NEIAAC/python-gui-template/compare/v1.0.1...v1.0.2) (2024-10-19)
 
 
