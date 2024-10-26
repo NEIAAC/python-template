@@ -7,7 +7,7 @@ from qfluentwidgets import (
     PrimaryToolButton,
     FluentIcon,
     SingleDirectionScrollArea,
-    PlainTextEdit,
+    TextBrowser,
     InfoBar,
     InfoBarPosition,
 )
@@ -20,6 +20,8 @@ from utils import loader
 
 
 class HomePage(QWidget):
+    worker: ExampleThread | None = None
+
     def __init__(self):
         super().__init__()
         self.setObjectName("Home")
@@ -30,54 +32,77 @@ class HomePage(QWidget):
         )
         self.finishSound.setVolume(0.2)
 
-        self.inputLabel = BodyLabel("INPUT")
-        self.inputField = LineEdit()
-        self.inputField.setMaximumWidth(500)
-        self.inputField.setPlaceholderText("This is a placeholder!")
-        self.inputField.textChanged.connect(lambda text: config.input.set(text))
-        self.inputField.setText(config.input.get())
+        self.firstInputLabel = BodyLabel("<b>FIRST EXAMPLE INPUT<b>")
+        self.firstInputField = LineEdit()
+        self.firstInputField.setMaximumWidth(500)
+        self.firstInputField.setPlaceholderText(
+            "Text written on this one is saved between app restarts!"
+        )
+        self.firstInputField.textChanged.connect(
+            lambda text: config.input.set(text)
+        )
+        self.firstInputField.setText(config.input.get())
+        self.firstInputLayout = QVBoxLayout()
+        self.firstInputLayout.setSpacing(10)
+        self.firstInputLayout.addWidget(self.firstInputLabel)
+        self.firstInputLayout.addWidget(self.firstInputField)
+
+        self.secondInputLabel = BodyLabel("<b>SECOND EXAMPLE INPUT<b>")
+        self.secondInputField = LineEdit()
+        self.secondInputField.setMaximumWidth(500)
+        self.secondInputField.setPlaceholderText("This is a placeholder.")
+        self.secondInputLayout = QVBoxLayout()
+        self.secondInputLayout.setSpacing(10)
+        self.secondInputLayout.addWidget(self.secondInputLabel)
+        self.secondInputLayout.addWidget(self.secondInputField)
 
         self.inputLayout = QVBoxLayout()
-        self.inputLayout.setSpacing(10)
-        self.inputLayout.addWidget(self.inputLabel)
-        self.inputLayout.addWidget(self.inputField)
+        self.inputLayout.setSpacing(20)
+        self.inputLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        self.inputLayout.addLayout(self.firstInputLayout)
+        self.inputLayout.addLayout(self.secondInputLayout)
 
-        self.outputBox = PlainTextEdit()
-        self.outputBox.setMinimumHeight(150)
-        self.outputBox.setReadOnly(True)
-        self.outputBox.setPlaceholderText("Progress will be shown here.")
+        self.runLogsBox = TextBrowser()
+        self.runLogsBox.setHtml("")
+        self.runLogsBox.setMinimumHeight(150)
+        self.runLogsBox.setMaximumHeight(300)
+        self.runLogsBox.setReadOnly(True)
+        self.runLogsBox.setPlaceholderText(
+            "Press the start button on the left to begin. \
+            \nLog output from the run will be shown here. \
+            \nThe trash can button will clear this box."
+        )
+        self.runButton = PrimaryToolButton(FluentIcon.PLAY)
+        self.runButton.setFixedWidth(100)
+        self.runButton.clicked.connect(self.runExample)
+        self.runLogsClearButton = PrimaryToolButton(FluentIcon.DELETE)
+        self.runLogsClearButton.setDisabled(True)
+        self.runLogsClearButton.setFixedWidth(100)
+        self.runLogsClearButton.clicked.connect(
+            lambda: (
+                self.runLogsBox.clear(),
+                self.runLogsClearButton.setDisabled(True),
+            )
+        )
+        self.runButtonLayout = QVBoxLayout()
+        self.runButtonLayout.setSpacing(10)
+        self.runButtonLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        self.runButtonLayout.addWidget(self.runButton)
+        self.runButtonLayout.addWidget(self.runLogsClearButton)
+        self.runContentLayout = QHBoxLayout()
+        self.runContentLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        self.runContentLayout.setSpacing(10)
+        self.runContentLayout.addLayout(self.runButtonLayout)
+        self.runContentLayout.addWidget(self.runLogsBox)
 
-        self.outputClearButton = PrimaryToolButton(FluentIcon.DELETE)
-        self.outputClearButton.setDisabled(True)
-        self.outputClearButton.clicked.connect(self.outputBox.clear)
-
-        self.outputButtonLayout = QVBoxLayout()
-        self.outputButtonLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
-        self.outputButtonLayout.setSpacing(10)
-        self.outputButtonLayout.addWidget(self.outputClearButton)
-
-        self.outputLayout = QHBoxLayout()
-        self.outputLayout.setSpacing(10)
-        self.outputLayout.addLayout(self.outputButtonLayout)
-        self.outputLayout.addWidget(self.outputBox)
-
-        self.startButton = PrimaryToolButton(FluentIcon.PLAY)
-        self.startButton.setFixedWidth(100)
-
-        self.exampleWorker = None
-        self.startButtonLayout = QHBoxLayout()
-        self.startButtonLayout.setAlignment(Qt.AlignmentFlag.AlignRight)
-        self.startButtonLayout.addWidget(self.startButton)
-        self.startButton.clicked.connect(self.runExample)
-
-        self.contentWidget = QWidget()
-        self.contentLayout = QVBoxLayout(self.contentWidget)
+        self.contentLayout = QVBoxLayout()
         self.contentLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
         self.contentLayout.setContentsMargins(40, 40, 50, 40)
         self.contentLayout.setSpacing(40)
         self.contentLayout.addLayout(self.inputLayout)
-        self.contentLayout.addLayout(self.outputLayout)
-        self.contentLayout.addLayout(self.startButtonLayout)
+        self.contentLayout.addLayout(self.runContentLayout)
+        self.contentWidget = QWidget()
+        self.contentWidget.setLayout(self.contentLayout)
 
         self.scrollArea = SingleDirectionScrollArea(
             orient=Qt.Orientation.Vertical
@@ -97,29 +122,42 @@ class HomePage(QWidget):
 
     def runExample(self):
         """Runs the example logic for this page."""
-        if self.exampleWorker is not None and self.exampleWorker.isRunning():
+        if self.worker is not None and self.worker.isRunning():
             return
-        if not self.inputField.text():
-            InfoBar.error(
-                title="Input field is empty!",
-                content="",
-                isClosable=True,
-                position=InfoBarPosition.TOP_RIGHT,
-                duration=4000,
-                parent=self,
-            )
-            return
-        self.startButton.setDisabled(True)
-        self.exampleWorker = ExampleThread(self.inputField.text())
-        self.exampleWorker.outputSignal.connect(
-            lambda text: (
-                self.outputBox.appendPlainText(text),
-                self.outputClearButton.setDisabled(False),
-            )
+
+        schema = {
+            "First input": self.firstInputField.text(),
+        }
+        for input in schema:
+            if not schema[input]:
+                InfoBar.error(
+                    title=f"{input} field cannot be empty!",
+                    content="",
+                    isClosable=True,
+                    position=InfoBarPosition.TOP_RIGHT,
+                    duration=4000,
+                    parent=self,
+                )
+                return
+
+        self.runButton.setDisabled(True)
+
+        self.worker = ExampleThread(
+            self.firstInputField.text(),
+            self.secondInputField.text(),
         )
 
+        def output(text, level):
+            if level == "ERROR":
+                self.runLogsBox.append(f'<font color="red">{text}</font>')
+            else:
+                self.runLogsBox.append(f'<font color="green">{text}</font>')
+            self.runLogsClearButton.setDisabled(False)
+
+        self.worker.outputSignal.connect(output)
+
         def finished():
-            self.startButton.setDisabled(False)
+            self.runButton.setDisabled(False)
             App.alert(self, 0)
             if (
                 App.applicationState()
@@ -128,5 +166,5 @@ class HomePage(QWidget):
                 SystemTray().send("Example finished!", "Go back to the app.")
             self.finishSound.play()
 
-        self.exampleWorker.finished.connect(finished)
-        self.exampleWorker.start()
+        self.worker.finished.connect(finished)
+        self.worker.start()

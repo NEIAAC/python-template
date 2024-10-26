@@ -6,31 +6,31 @@ from utils.logger import logger
 
 
 class ExampleThread(QThread):
-    outputSignal = Signal(str)
+    """Example thread to run tasks in the background and send events to the main UI thread."""
 
-    def __init__(self, data: str):
+    outputSignal = Signal(str, str)
+
+    def __init__(self, firstInput: str, secondInput: str = None):
         super().__init__()
-        self.data = data
+        self.firstInput = firstInput
+        self.secondInput = secondInput
 
     def output(self, text: str, level="INFO"):
         logger.log(level, text)
         timestamped = f"[{datetime.now().strftime('%H:%M:%S')}] {text}\n"
-        self.outputSignal.emit(timestamped)
+        self.outputSignal.emit(timestamped, level)
 
     def run(self):
-        try:
+        with logger.catch():
+            self.output("Your first input was: " + self.firstInput)
             self.output(
-                "This is the start message, we will now wait for 3 seconds to simulate some work"
+                "If you entered text in the second input it will be shown here after 3 seconds"
             )
-            self.msleep(3000)
-
-            self.output(
-                f'You entered "{self.data}" in the input. We will now wait 3 more seconds'
-            )
-            self.msleep(3000)
-
-            self.output(
-                "Example finished, a sound was played. If the app is minimized it will also flash in the taskbar and you will receive a system notification"
-            )
-        except Exception as e:
-            self.output(str(e), "ERROR")
+            self.msleep(1500)
+            try:
+                raise Exception("This is an example error after 1.5 seconds")
+            except Exception as e:
+                self.output(str(e), "ERROR")
+            self.msleep(1500)
+            if self.secondInput:
+                self.output("Your second input was: " + self.secondInput)

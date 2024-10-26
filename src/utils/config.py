@@ -28,9 +28,7 @@ class ConfigItem(OptionsConfigItem):
 
 
 class Config(QConfig):
-    """
-    Global object for app options.
-    """
+    """Global object for app data."""
 
     maximized = ConfigItem("Window", "Maximized", False, BoolValidator())
     width = ConfigItem("Window", "Width", 500)
@@ -61,9 +59,5 @@ class Config(QConfig):
 
 
 config = Config()
-config.style.valueChanged.connect(lambda mode: (qfluentwidgets.setTheme(mode)))
-config.color.valueChanged.connect(
-    lambda color: (qfluentwidgets.setThemeColor(color))
-)
 
 qconfig.load(CONFIG_PATH, config)
