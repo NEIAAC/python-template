@@ -12,7 +12,7 @@ With the exception of the points above, we believe this template to be decently 
 
 - ### Windows 🪟
 
-  - [Click this link to start the download.](https://github.com/NEIAAC/python-gui-template/releases/latest/download/Windows.zip)
+  - [Use this link to start the download.](https://github.com/NEIAAC/python-gui-template/releases/latest/download/Windows.zip)
 
   - Start the `main.exe` file **inside** the extracted folder by _double clicking_ on it, you can create a shortcut with any name you like for this file.
 
