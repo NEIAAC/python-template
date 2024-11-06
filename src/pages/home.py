@@ -13,7 +13,7 @@ from qfluentwidgets import (
 )
 
 from app import App
-from logic.example import ExampleThread
+from services.example import ExampleThread
 from utils.config import config
 from utils.system_tray import SystemTray
 from utils import loader

@@ -12,25 +12,32 @@ With the exception of the points above, we believe this template to be decently 
 
 - ### Windows 🪟
 
-  - Use this [link](https://github.com/NEIAAC/python-gui-template/releases/latest/download/Windows.zip) to start the download.
+  - [Click this link to start the download.](https://github.com/NEIAAC/python-gui-template/releases/latest/download/Windows.zip)
 
-  - Run the `main.exe` file inside the extracted folder, you can create a shortcut with any name you like for this file.
+  - Start the `main.exe` file **inside** the extracted folder by _double clicking_ on it, you can create a shortcut with any name you like for this file.
+
+  - If you get a message from Windows with a warning that blocks the app from running, look for the **hidden** continue **button** and use it to **safely ignore** this warning.
 
 - ### Linux 🐧
 
-  - Use this [link](https://github.com/NEIAAC/python-gui-template/releases/latest/download/Linux.zip) to start the download.
+  - [Use this link to start the download.](https://github.com/NEIAAC/python-gui-template/releases/latest/download/Linux.zip)
 
-  - Run the `main.bin` file inside the extracted folder. Note that compilation is targeted at Ubuntu (Wayland), other distributions may need additional actions to run the app.
+  - Start the `main.bin` file **inside** the extracted folder, remember to **update the execution permissions** first by opening a terminal and running:
+
+      ```shell
+      chmod +x main.bin
+      ./main.bin
+      ```
+
+  - This binary has been successfully tested on Ubuntu and Arch with both the Wayland and X11 protocols, other setups may need additional tinkering.
 
 - ### MacOS 🍎
 
-  - Use this [link](https://github.com/NEIAAC/python-gui-template/releases/latest/download/MacOS.zip) to start the download.
+  - [Use this link to start the download.](https://github.com/NEIAAC/python-gui-template/releases/latest/download/MacOS.zip)
 
-  - Run the bundle installer extracted from the `.zip` file.
+  - Start the extracted bundle app by _clicking_ on it.
 
-- Depending on your operating system, you _may_ get a **security warning** due to the app not being signed. You can **safely ignore it** as our builds are automated from the open sourced codebase.
-
-- Inside the app you can find a guide page with a few more flow details.
+  - If the app fails to open, go to [this support page](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac) and select your OS version at the top, then follow the instructions.
 
 ## Development 🛠️
 
@@ -96,10 +103,8 @@ When using this repository as a template make sure to:
 
 - Edit the constants that refer to the app in the `utils/constants.py` file.
 
-- Make sure the string in the `version.py` file matches the project version in the `pyproject.toml` file. This is only needed for the initial setup, after that the `release.yaml` workflow will ensure they are always both incremented and kept in sync.
+- Change the `env` variables in the `build.yaml` workflow for the final build manifest.
 
-- Update most of the `env` variables in the `build.yaml` workflow for the final build manifest.
-
-- Update the description and hard coded links in this `README.md`, specifically the download links.
+- Update the description and hard coded repository links in this `README.md`, specifically the download links.
 
 - Delete these notes.
