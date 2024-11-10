@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/NEIAAC/python-gui-template/compare/v1.0.3...v1.1.0) (2024-11-10)
+
+
+### Features
+
+* bump pyside6 version ([7f3a534](https://github.com/NEIAAC/python-gui-template/commit/7f3a534000fcc6e6f77a841572d0a850ee330ab5))
+
 ## [1.0.3](https://github.com/NEIAAC/python-gui-template/compare/v1.0.2...v1.0.3) (2024-10-26)
 
 
