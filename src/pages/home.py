@@ -14,9 +14,9 @@ from qfluentwidgets import (
 
 from app import App
 from services.example import ExampleThread
-from utils.config import config
+from utils.data_saver import config
 from utils.system_tray import SystemTray
-from utils import loader
+from utils import file_loader
 
 
 class HomePage(QWidget):
@@ -28,7 +28,7 @@ class HomePage(QWidget):
 
         self.finishSound = QSoundEffect()
         self.finishSound.setSource(
-            QUrl.fromLocalFile(loader.resources("sounds/success.wav"))
+            QUrl.fromLocalFile(file_loader.loadResource("sounds/success.wav"))
         )
         self.finishSound.setVolume(0.2)
 

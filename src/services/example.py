@@ -10,7 +10,7 @@ class ExampleThread(QThread):
 
     outputSignal = Signal(str, str)
 
-    def __init__(self, firstInput: str, secondInput: str = None):
+    def __init__(self, firstInput: str, secondInput: str | None = None):
         super().__init__()
         self.firstInput = firstInput
         self.secondInput = secondInput

@@ -12,32 +12,36 @@ With the exception of the points above, we believe this template to be decently 
 
 - ### Windows 🪟
 
-  - [Use this link to start the download.](https://github.com/NEIAAC/python-template/releases/latest/download/Windows.zip)
+  - [Use this link to start the download.](https://github.com/NEIAAC/signeitory/releases/latest/download/Windows.zip)
 
-  - Start the `main.exe` file **inside** the extracted folder by _double clicking_ on it, you can create a shortcut with any name you like for this file.
+  - Start the `exe` file **inside** the extracted folder by _double clicking_ on it, you can create a shortcut with any name you like for this file.
 
   - If you get a message from Windows with a warning that blocks the app from running, look for the **hidden** continue **button** and use it to **safely ignore** this warning.
 
 - ### Linux 🐧
 
-  - [Use this link to start the download.](https://github.com/NEIAAC/python-template/releases/latest/download/Linux.zip)
+  - [Use this link to start the download.](https://github.com/NEIAAC/signeitory/releases/latest/download/Linux.zip)
 
-  - Start the `main.bin` file **inside** the extracted folder, remember to **update the execution permissions** first by opening a terminal and running:
+  - Start the `bin` file **inside** the extracted folder, remember to **update the execution permissions** first by opening a terminal and running:
 
       ```shell
-      chmod +x main.bin
-      ./main.bin
+      chmod +x <name>.bin
+      ./<name>.bin
       ```
 
   - This binary has been successfully tested on Ubuntu and Arch with both the Wayland and X11 protocols, other setups may need additional tinkering.
 
 - ### MacOS 🍎
 
-  - [Use this link to start the download.](https://github.com/NEIAAC/python-template/releases/latest/download/MacOS.zip)
+  - [Use this link to start the download.](https://github.com/NEIAAC/signeitory/releases/latest/download/MacOS.zip)
 
-  - Start the extracted bundle app by _clicking_ on it.
+  - Start the extracted bundle `app` by _clicking_ on it.
 
   - If the app fails to open, go to [this support page](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac) and select your OS version at the top, then follow the instructions.
+
+- Detailed usage instructions can be found in the [wiki](https://github.com/NEIAAC/signeitory/wiki) page.
+
+- See the [example](./example/) directory for demo files.
 
 ## Development 🛠️
 
@@ -65,10 +69,17 @@ With the exception of the points above, we believe this template to be decently 
 
 - ### Tooling 🧰
 
+  - Mypy is used for type checking:
+
+    ```shell
+    pip install .[lint]
+    mypy src/main.py
+    ```
+
   - Ruff is used as a linter and formatter:
 
     ```shell
-    pip install .[check]
+    pip install .[lint]
     ruff check --fix
     ruff format
 
@@ -79,6 +90,8 @@ With the exception of the points above, we believe this template to be decently 
     # Changed files must be added to the staged area and commited again to apply fixes.
     ```
 
+- ### Testing 🧪
+
   - PyTest and PyTest-Qt are used for testing:
 
     ```shell
@@ -86,25 +99,26 @@ With the exception of the points above, we believe this template to be decently 
     pytest
     ```
 
-  - Nuitka is used for cross-compiling to all supported platforms:
+- ### Building 📦
+
+  - Nuitka is used for cross-compiling to all supported platforms, this is how the app is built from the source code, in each release:
 
     ```shell
     pip install .[build]
-    nuitka <options>
+    nuitka <options> src/main.py
     ```
 
-    See the build [workflow](./.github/workflows/build.yaml) for a list of options used for each platform.
+    See the [deploy workflow](./.github/workflows/deploy.yaml) for a list of options used for each platform.
 
 ## Notes 📝
 
 When using this repository as a template make sure to:
 
-- Edit the project name and version in the `pyproject.toml` file.
+- Edit the app information in the `src/config/metadata.py` file. Along with being used in the code, these values are
+also used during the build process to set specific data in the binaries.
 
-- Edit the constants that refer to the app in the `utils/constants.py` file.
+- Change the version string in the `.manifest.json` file, otherwise the project will start at the same version as the template. You only need to change the version here, the next triggered release will update any other related files based on the new version.
 
-- Change the `env` variables in the `build.yaml` workflow for the final build manifest.
-
-- Update the description and hard coded repository links in this `README.md`, specifically the download links.
+- Update the description and hard coded repository links in this `README.md`, specifically the download links in the **Usage** section.
 
 - Delete these notes.
