@@ -121,4 +121,6 @@ also used during the build process to set specific data in the binaries.
 
 - Update the description and hard coded repository links in this `README.md`, specifically the download links in the **Usage** section.
 
+- Be aware that signing apps for MacOS and Windows is not done automatically. If you need app signing, it is recommended to introduce it in the build/deploy workflow.
+
 - Delete these notes.
