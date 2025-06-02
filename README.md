@@ -12,7 +12,7 @@ With the exception of the points above, we believe this template to be decently 
 
 - ### Windows 🪟
 
-  - [Use this link to start the download.](https://github.com/NEIAAC/signeitory/releases/latest/download/Windows.zip)
+  - [Use this link to start the download.](https://github.com/NEIAAC/python-template/releases/latest/download/Windows.zip)
 
   - Start the `exe` file **inside** the extracted folder by _double clicking_ on it, you can create a shortcut with any name you like for this file.
 
@@ -20,7 +20,7 @@ With the exception of the points above, we believe this template to be decently 
 
 - ### Linux 🐧
 
-  - [Use this link to start the download.](https://github.com/NEIAAC/signeitory/releases/latest/download/Linux.zip)
+  - [Use this link to start the download.](https://github.com/NEIAAC/python-template/releases/latest/download/Linux.zip)
 
   - Start the `bin` file **inside** the extracted folder, remember to **update the execution permissions** first by opening a terminal and running:
 
@@ -33,15 +33,11 @@ With the exception of the points above, we believe this template to be decently 
 
 - ### MacOS 🍎
 
-  - [Use this link to start the download.](https://github.com/NEIAAC/signeitory/releases/latest/download/MacOS.zip)
+  - [Use this link to start the download.](https://github.com/NEIAAC/python-template/releases/latest/download/MacOS.zip)
 
   - Start the extracted bundle `app` by _clicking_ on it.
 
   - If the app fails to open, go to [this support page](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac) and select your OS version at the top, then follow the instructions.
-
-- Detailed usage instructions can be found in the [wiki](https://github.com/NEIAAC/signeitory/wiki) page.
-
-- See the [example](./example/) directory for demo files.
 
 ## Development 🛠️
 
