@@ -3,6 +3,7 @@ from PySide6.QtCore import Qt
 from qfluentwidgets import (
     BodyLabel,
     SingleDirectionScrollArea,
+    SmoothMode,
 )
 
 
@@ -28,6 +29,13 @@ class GuidePage(QWidget):
 
 <p>
     The run logs box is also intended to serve as an example of how to pass data between worker threads and the main UI thread.
+</p>
+
+<p>
+    Projects using this template should have documentation either in the form of a page on the app, like this one, or using a Wiki in the
+    repository. GitHub, for example, has a built-in Wiki page in each repository, to where you can point users. Both of these options have downsides
+    and upsides. Using a page in the app is easier for users to access, but you will have to build and bundle the app anytime you want to update the documentation.
+    Using the GitHub Wiki page of the repository will let you edit the documentation at any time, but users will have to go to the repository to access it.
 </p>
 
 <h1>Tips</h1>
@@ -67,6 +75,7 @@ Improvements to build upon when using this template.
         )
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.enableTransparentBackground()
+        self.scrollArea.setSmoothMode(SmoothMode.NO_SMOOTH)
 
         self.mainLayout = QVBoxLayout()
         self.mainLayout.addWidget(self.scrollArea)
