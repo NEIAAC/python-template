@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/NEIAAC/python-template/compare/v2.0.0...v2.0.1) (2025-06-12)
+
+
+### Bug Fixes
+
+* Remove broken smooth scroll area ([db3b2e5](https://github.com/NEIAAC/python-template/commit/db3b2e55047f5331b0caaa7e3b77ca866c666393))
+
 ## [2.0.0](https://github.com/NEIAAC/python-template/compare/v1.2.10...v2.0.0) (2025-05-23)
 
 
