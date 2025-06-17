@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/NEIAAC/python-template/compare/v2.0.1...v2.0.2) (2025-06-17)
+
+
+### Bug Fixes
+
+* Improve row number tracking ([a7ffd66](https://github.com/NEIAAC/python-template/commit/a7ffd664f41193c75ca5df15e650872df8560d8a))
+
 ## [2.0.1](https://github.com/NEIAAC/python-template/compare/v2.0.0...v2.0.1) (2025-06-12)
 
 
