@@ -16,7 +16,6 @@ from qfluentwidgets import (
 from app import App
 from services.example import ExampleThread
 from utils.data_saver import config
-from utils.system_tray import SystemTray
 from utils import file_loader
 
 
@@ -161,11 +160,11 @@ class HomePage(QWidget):
         def finished():
             self.runButton.setDisabled(False)
             App.alert(self, 0)
-            if (
-                App.applicationState()
-                == Qt.ApplicationState.ApplicationInactive
-            ):
-                SystemTray().send("Example finished!", "Go back to the app.")
+            # if (
+            #     App.applicationState()
+            #     == Qt.ApplicationState.ApplicationInactive
+            # ):
+            #     SystemTray().send("Example finished!", "Go back to the app.")
             self.finishSound.play()
 
         self.worker.finished.connect(finished)
