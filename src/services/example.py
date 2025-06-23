@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from PySide6.QtCore import QThread, Signal
 
 from utils.logger import logger
@@ -17,13 +15,11 @@ class ExampleThread(QThread):
 
     def output(self, text: str, level="INFO"):
         logger.log(level, text)
-        timestamped = f"[{datetime.now().strftime('%H:%M:%S')}] {text}\n"
-        self.outputSignal.emit(timestamped, level)
+        self.outputSignal.emit(text, level)
 
     def run(self):
-        logger.info(
-            f"Starting example thread with input parameters: {self.__dict__}"
-        )
+        inputs = self.__dict__.copy()
+        logger.info(f"Starting example thread with input parameters: {inputs}")
         self.output("...")
         with logger.catch():
             self.output("Your first input was: " + self.firstInput)
