@@ -113,7 +113,7 @@ When using this repository as a template make sure to:
 - Edit the app information in the `src/config/metadata.py` file. Along with being used in the code, these values are
 also used during the build process to set specific data in the binaries.
 
-- Change the version string in the `.manifest.json` file, otherwise the project will start at the same version as the template. You only need to change the version here, the next triggered release will update any other related files based on the new version.
+- Change the version string in the `.manifest.json` file, otherwise the project will start at the same version as the template. You only need to change the version here, the next triggered release will update any other related files based on the new version. Also delete the `CHANGELOG.md` file as it relates to changes in the template, a new one will be generated on the next release.
 
 - Update the description and hard coded repository links in this `README.md`, specifically the download links in the **Usage** section.
 
