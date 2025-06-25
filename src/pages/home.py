@@ -17,6 +17,7 @@ from app import App
 from services.example import ExampleThread
 from utils.data_saver import config
 from utils import file_loader
+from utils.logger import LogLevel
 
 
 class HomePage(QWidget):
@@ -148,11 +149,15 @@ class HomePage(QWidget):
             self.secondInputField.text(),
         )
 
-        def output(text, level):
-            if level == "ERROR":
+        def output(text: str, level: LogLevel):
+            if level == LogLevel.ERROR.value:
                 self.runLogsBox.append(f'<font color="red">{text}</font>')
-            else:
+            elif level == LogLevel.WARNING.value:
+                self.runLogsBox.append(f'<font color="olive">{text}</font>')
+            elif level == LogLevel.SUCCESS.value:
                 self.runLogsBox.append(f'<font color="green">{text}</font>')
+            else:
+                self.runLogsBox.append(f'<font color="gray">{text}</font>')
             self.runLogsClearButton.setDisabled(False)
 
         self.worker.outputSignal.connect(output)
@@ -160,11 +165,6 @@ class HomePage(QWidget):
         def finished():
             self.runButton.setDisabled(False)
             App.alert(self, 0)
-            # if (
-            #     App.applicationState()
-            #     == Qt.ApplicationState.ApplicationInactive
-            # ):
-            #     SystemTray().send("Example finished!", "Go back to the app.")
             self.finishSound.play()
 
         self.worker.finished.connect(finished)

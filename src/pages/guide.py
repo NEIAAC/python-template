@@ -23,8 +23,8 @@ class GuidePage(QWidget):
 
 <p>
     Running the app will display the first input in the logs box and the second after 3 seconds, if it was entered.
-    An example error will also be shown halfway through the process. If the app is minimized when the process ends a
-    notification will be sent and the app will blink/jump in the taskbar depending on the operating system.
+    An example error will also be shown halfway through the process. If the app is minimized when the process ends it
+    will blink/jump in the taskbar depending on the operating system.
 </p>
 
 <p>
@@ -45,8 +45,8 @@ Improvements to build upon when using this template.
     <h3>Certification</h3>
 
     <ul>
-        <li>Sign the app during the build process using a trusted certificate authority.</li>
-        <li>These are usually paid services but having the app signed will remove the insecuriy warning from some operating systems.</li>
+        <li>Sign the app after the build process using a trusted certificate authority.</li>
+        <li>These are usually paid services but having the app signed will remove the insecurity warning from some operating systems.</li>
     </ul>
 
     <h3>Localization</h3>
