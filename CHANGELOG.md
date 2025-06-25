@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.4](https://github.com/NEIAAC/python-template/compare/v2.0.3...v2.0.4) (2025-06-25)
+
+
+### Bug Fixes
+
+* Improve error messages ([d416331](https://github.com/NEIAAC/python-template/commit/d4163316fce4c795c25c2c7476f7491c2cb4795e))
+
 ## [2.0.3](https://github.com/NEIAAC/python-template/compare/v2.0.2...v2.0.3) (2025-06-25)
 
 
