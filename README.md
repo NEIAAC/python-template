@@ -10,13 +10,15 @@ With the exception of the points above, we believe this template to be decently 
 
 - The app is automatically built by a pipeline with every release, so we provide **direct download links** for most operating systems.
 
+- If you run into issues with the downloads below, or if the app does not launch, you can always run it as a developer using [these](#development-%EF%B8%8F) instructions. It's especially easy if you already have Python installed!
+
 - ### Windows 🪟
 
   - [Use this link to start the download.](https://github.com/NEIAAC/python-template/releases/latest/download/Windows.zip)
 
   - Start the `exe` file **inside** the extracted folder by _double clicking_ on it, you can create a shortcut with any name you like for this file.
 
-  - If you get a message from Windows with a warning that blocks the app from running, look for the **hidden** continue **button** and use it to **safely ignore** this warning.
+  - If you get a message from Windows with a warning that blocks the app from running, add it as a security exception.
 
 - ### Linux 🐧
 
@@ -37,7 +39,7 @@ With the exception of the points above, we believe this template to be decently 
 
   - Start the extracted bundle `app` by _clicking_ on it.
 
-  - If the app fails to open, go to [this support page](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac) and select your OS version at the top, then follow the instructions.
+  - You may need to add the app as a security exception, for that you can follow [this support page](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac).
 
 ## Development 🛠️
 
