@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.3](https://github.com/NEIAAC/python-template/compare/v2.0.2...v2.0.3) (2025-06-25)
+
+
+### Documentation
+
+* Update error instructions ([834e1d4](https://github.com/NEIAAC/python-template/commit/834e1d4d62cb26a465bf3cc4f5184ed3717f2e85))
+* Update template usage instructions ([6ac9f6f](https://github.com/NEIAAC/python-template/commit/6ac9f6f30a1c582c3e7b06ee63ea5d8f095d0c8b))
+
 ## [2.0.2](https://github.com/NEIAAC/python-template/compare/v2.0.1...v2.0.2) (2025-06-17)
 
 
