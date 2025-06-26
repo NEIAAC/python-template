@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/NEIAAC/python-template/compare/v2.0.4...v2.1.0) (2025-06-26)
+
+
+### Features
+
+* Add debug flag ([a3cbd0a](https://github.com/NEIAAC/python-template/commit/a3cbd0a52473a2e4e96780afb005397178276fb6))
+
 ## [2.0.4](https://github.com/NEIAAC/python-template/compare/v2.0.3...v2.0.4) (2025-06-25)
 
 
